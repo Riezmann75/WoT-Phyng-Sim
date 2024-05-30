@@ -9,6 +9,7 @@ RUN echo -e "\n\n\n********** Installing OpenFOAM dependencies **********\n\n\n"
 		ssh \
 		sudo \
 		wget \
+	        libglu1 \	
 		software-properties-common ;\
 		rm -rf /var/lib/apt/lists/*
 
