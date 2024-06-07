@@ -13,6 +13,7 @@ async def post_process(client: AsyncClient):
 async def create_video():
     import subprocess
 
-    # TODO: please finalize the command to create video
-
+    subprocess.run(
+        ["./bash.sh"]
+    )
     return {"message": "Video has been created."}
