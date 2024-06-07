@@ -40,6 +40,20 @@ services:
     container_name: wop_backend_paraview
     volumes:
       - cases_volume:/wop/cases
+  backend-proxy:
+    build:
+      context: ./backend/proxy-server
+    ports:
+      - 3333:3333
+    command: "poetry run python3.8 run.py --proxy-headers  --port  80"
+    environment:
+      - NODE_SERVER=http://wop_backend_nodejs:8080
+    depends_on:
+      - backend-python
+      - backend-nodejs
+    container_name: wop_backend_proxy_python
+    networks:
+      - wop-network
   # evaluation:
   #   build:
   #     context: ./evaluation
